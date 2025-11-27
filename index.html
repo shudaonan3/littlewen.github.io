@@ -1,81 +1,809 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <title>陈志文的洗脚记</title>
+  <meta charset="UTF-8" />
+  <title>下水道小老鼠陳志文的故事 - 生活隨筆</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="記錄下水道小老鼠陳志文，如何從陰暗角落走向光明世界的奇妙旅程。" />
   <style>
-    body {
-      font-family: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-      background-color: #f4f4f4;
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      line-height: 1.6;
     }
-    .container {
-      max-width: 820px;
-      margin: 40px auto;
-      background-color: #fff;
-      padding: 40px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-    }
-    h1 {
-      text-align: center;
-      font-size: 2.2rem;
+
+    html, body {
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC",
+                   "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.7;
       color: #333;
-      margin-bottom: 24px;
+      background-color: #f7f6f3;
     }
-    .meta {
-      text-align: center;
-      color: #888;
-      font-size: 0.9rem;
-      margin-bottom: 32px;
+
+    a {
+      color: #0066aa;
+      text-decoration: none;
     }
-    p {
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #111;
+      color: #fff;
+    }
+
+    .top-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .logo {
+      font-size: 22px;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .logo span {
+      color: #f3c258;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+    }
+
+    nav li a {
+      color: #eee;
+      font-size: 14px;
+    }
+
+    nav li a:hover {
+      color: #f3c258;
+    }
+
+    /* Hero section */
+    .hero {
+      position: relative;
+      background: url("https://via.placeholder.com/1600x500/20262e/ffffff?text=%E4%B8%8B%E6%B0%B4%E9%81%93%E4%B8%96%E7%95%8C") center/cover no-repeat;
+      color: #fff;
+      padding: 80px 20px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    .hero-kicker {
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #f3c258;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+      font-weight: 600;
       margin-bottom: 18px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      max-width: 600px;
+      color: #f2f2f2;
+      margin-bottom: 25px;
+    }
+
+    .hero-meta {
+      font-size: 13px;
+      color: #ddd;
+    }
+
+    /* Main content */
+    main {
+      flex: 1;
+    }
+
+    .content-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+      display: grid;
+      grid-template-columns: 3fr 1.1fr;
+      gap: 40px;
+    }
+
+    /* Article styling */
+    article {
+      background-color: #fff;
+      padding: 32px 28px;
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    .article-header {
+      margin-bottom: 24px;
+      border-bottom: 1px solid #eee3d6;
+      padding-bottom: 12px;
+    }
+
+    .article-title {
+      font-size: 26px;
+      margin-bottom: 6px;
+    }
+
+    .article-meta {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .article-meta span + span::before {
+      content: "・";
+      margin: 0 6px;
+    }
+
+    .article-body h2 {
+      font-size: 20px;
+      margin: 26px 0 10px;
       color: #444;
-      text-indent: 2em;
     }
-    blockquote {
+
+    .article-body h3 {
+      font-size: 17px;
+      margin: 22px 0 8px;
+      color: #555;
+    }
+
+    .article-body p {
+      margin: 10px 0;
+      text-align: justify;
+    }
+
+    .article-body p.lead {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .article-body .quote {
+      border-left: 3px solid #f3c258;
+      padding-left: 16px;
       margin: 20px 0;
-      padding: 15px 25px;
-      background-color: #fafafa;
-      border-left: 4px solid #ffb347;
-      font-style: italic;
       color: #666;
+      font-style: italic;
+      background: #fffaf1;
     }
-    .tips {
-      background-color: #fff7e6;
-      border: 1px dashed #ffa940;
-      padding: 16px;
-      border-radius: 8px;
-      margin-top: 30px;
+
+    .article-body ul {
+      margin: 10px 0 10px 20px;
+      padding-left: 10px;
     }
-    .tips h3 {
-      margin-top: 0;
-      color: #d46b08;
+
+    .article-body li {
+      margin: 6px 0;
+    }
+
+    .article-img {
+      margin: 18px 0;
+      background-color: #eee;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+    }
+
+    .article-img-caption {
+      font-size: 13px;
+      color: #777;
+      padding: 6px 10px 10px;
+      background: #fafafa;
+    }
+
+    /* Sidebar */
+    aside {
+      font-size: 14px;
+    }
+
+    .sidebar-section {
+      background-color: #fff;
+      border-radius: 4px;
+      padding: 20px 18px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      margin-bottom: 18px;
+    }
+
+    .sidebar-section h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #eee3d6;
+      padding-bottom: 6px;
+      color: #444;
+    }
+
+    .author-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .author-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #ccc;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .tag {
+      border-radius: 999px;
+      border: 1px solid #e0d7c6;
+      padding: 3px 10px;
+      font-size: 12px;
+      color: #666;
+      background: #faf8f2;
+    }
+
+    .sidebar-links ul {
+      list-style: none;
+    }
+
+    .sidebar-links li + li {
+      margin-top: 6px;
+    }
+
+    .sidebar-links a {
+      color: #555;
+    }
+
+    .sidebar-links a:hover {
+      color: #0066aa;
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: #bbb;
+      font-size: 13px;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #bbb;
+    }
+
+    .footer-links a:hover {
+      color: #f3c258;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .content-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 60px 16px;
+      }
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      article {
+        padding: 24px 18px;
+      }
     }
   </style>
-head>
+</head>
 <body>
-  <div class="container">
-    <h1>陈志文的洗脚记</h1>
-    <div class="meta">
-      作者：小木｜日期：2025-11-27
+<div class="page-wrapper">
+
+  <!-- Header -->
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        生活誌<span>·隨筆</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">首頁</a></li>
+          <li><a href="#">故事專欄</a></li>
+          <li><a href="#">人物誌</a></li>
+          <li><a href="#">關於本站</a></li>
+        </ul>
+      </nav>
     </div>
-    <p>前些日子，陈志文忙完季度项目后，才发现自己已经连续熬夜多日。脚踝处那点酸胀像暗藏的信号，提醒他该给身体做一次彻底的放松。于是，他决定去家附近新开的足疗馆，来一场久违的洗脚体验。</p>
-    <p>推开足疗馆的玻璃门，淡淡的檀香伴着背景里的古筝曲悠然飘来。陈志文被安排在靠窗的位置，墙上的水墨画和柔和灯光，让他对这个决定格外满意。技师小李递上热毛巾时，还贴心地问他：“今天想要按得轻一点，还是重点舒压？”陈志文笑答：“今天就麻烦你重点放松肩颈和脚底了。”</p>
-    <p>热水一泡下去，脚底暖意蔓延，整个人仿佛从忙碌中抽离出来。技师熟练地调配藏红花和药草精油，手法由浅入深，在足弓和涌泉穴位上圈、按压。陈志文感到紧绷的神经一丝丝放松，连脑海中的工作列表也逐渐淡去。</p>
-    <blockquote>“忙不是问题，关键是要找回身体的节奏。”陈志文躺在舒适的皮椅上，心里默默想到。</blockquote>
-    <p>结束前，小李用热毛巾再次包裹双脚，轻柔地顺着小腿向上擦拭。那一刻，陈志文突然意识到，生活并不只有行色匆匆的目标和KPI，还应该有这样静谧又温柔的自我关照。他临走时在前台预约了下周同一时间的档期，顺便推荐给了几个也正忙得团团转的同事。</p>
-    <div class="tips">
-      <h3>放松小贴士</h3>
-      <ul>
-        <li>长时间久坐后，每隔一小时起身活动，促进脚部血液循环。</li>
-        <li>选择正规足疗馆，关注卫生环境和技师资质，更放心。</li>
-        <li>洗脚可加一些温草本，如艾叶或藏红花，舒缓效果更佳。</li>
-      </ul>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">LIFE AT THE UNDERGROUND</div>
+      <h1 class="hero-title">下水道小老鼠陳志文的故事</h1>
+      <p class="hero-subtitle">
+        在城市看不見的底層，有條潮濕曲折的下水道。那裡黑暗、狹窄、充滿怪味，
+        卻也是一隻名叫「陳志文」的小老鼠，用小小步伐追尋光明的大舞台。
+      </p>
+      <div class="hero-meta">
+        作者：城市觀察者　|　專題：地下生活誌
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Main content -->
+  <main>
+    <div class="content-wrapper">
+
+      <!-- Article -->
+      <article>
+        <header class="article-header">
+          <h2 class="article-title">從陰溝到星光：一隻小老鼠的心路歷程</h2>
+          <div class="article-meta">
+            <span>發表日期：2025-11-27</span>
+            <span>閱讀時間：約 10 分鐘</span>
+            <span>主題：成長 / 勇氣 / 夢想</span>
+          </div>
+        </header>
+
+        <div class="article-body">
+
+          <p class="lead">
+            很多人對「下水道」的第一印象，是臭味、污水和躲在角落的影子。
+            對陳志文來說，那裡卻是他的出生地、遊樂場，也是他學會勇敢和溫柔的地方。
+          </p>
+
+          <div class="article-img">
+            <img src="https://via.placeholder.com/900x450/37474f/ffffff?text=%E5%9F%8E%E5%B8%82%E4%B8%8B%E6%B0%B4%E9%81%93" alt="城市下水道的入口示意圖" />
+            <div class="article-img-caption">
+              城市底下密密麻麻的管線中，有一段是陳志文熟悉得不能再熟悉的「家」。
+            </div>
+          </div>
+
+          <h2>一、出生在流動的黑夜裡</h2>
+          <p>
+            志文出生在一個雨夜。那天城市的雨下得很大，街邊水溝滿溢，雨水從鐵柵欄縫隙
+            一股股灌入下水道，拍打著斑駁的牆壁，聲音在狹長的通道裡迴盪。
+          </p>
+          <p>
+            老鼠媽媽在一處相對乾燥的管道轉彎口築巢，破布、塑膠袋、紙箱碎片，是他們
+            所有的家當。巢的旁邊，一道細小的裂縫透著淡淡的光，是唯一能看見外面世界的窗。
+          </p>
+          <p>
+            志文睜開眼看到的第一件事，不是清晨的陽光，而是一圈圈灰暗的管壁，
+            和偶爾被水波折射進來，那一小片搖搖晃晃的光點。
+          </p>
+
+          <h3>小老鼠的第一堂課：聽聲音</h3>
+          <p>
+            在下水道裡，看不清楚是常態。老鼠媽媽教他用耳朵「看」世界：
+          </p>
+          <ul>
+            <li>遠處的滴水聲，代表前方有低窪積水，要小心。</li>
+            <li>沉悶的隆隆聲，是地面上公車經過，震動會帶來鬆動的碎屑。</li>
+            <li>突如其來的尖叫、踩踏聲，通常是人類或貓出現的前兆。</li>
+          </ul>
+          <p>
+            志文很快就學會了。他會閉上眼，站在黑暗裡，一寸一寸記住每一種聲音的方向、
+            節奏和意義。對他來說，整條下水道就像一份會發聲的地圖。
+          </p>
+
+          <h2>二、「垃圾」裡的寶藏與課本</h2>
+          <p>
+            志文的世界，食物多半來自「上面掉下來的東西」。有人把吃剩的麵丟進排水口，
+            有人隨手丟棄便利商店的飯糰，甚至偶爾會有整個掉落的麵包。
+          </p>
+
+          <div class="quote">
+            「對人來說是垃圾，對我們來說是禮物。」老鼠媽媽說，
+            「不過，真正的寶藏，有時候不是可以吃的。」
+          </div>
+
+          <p>
+            志文不太懂，直到有一天，一本被雨淋濕的圖畫書，被沖進了他們那段管道。
+            書的封面幾乎被泡爛了，只依稀看見上面畫著一隻穿外套的小老鼠，
+            背著小包包，在月光下走路。
+          </p>
+
+          <p>
+            書頁乾了之後，雖然皺皺的，卻還能勉強翻閱。志文對上面的圖像著了迷：
+            那隻小老鼠可以走在草地上，看得見遠處的山和一整片的星空。
+          </p>
+
+          <h3>第一次對「上面」有了想像</h3>
+          <p>
+            從那之後，志文只要一有空，就會趴在那本書旁邊，用爪子輕輕沿著線條滑過，
+            仔細看著每一幅圖。他不識字，但他能讀懂畫面裡流動的風、灑落的光、
+            和那份「不被管線包住」的自由。
+          </p>
+          <p>
+            他開始問媽媽：
+          </p>
+          <p>
+            「上面，真的有這麼大的天空嗎？」<br />
+            「風，真的會有味道嗎？」<br />
+            「我們，有一天也可以走在圖畫裡的地方嗎？」
+          </p>
+
+          <p>
+            老鼠媽媽只是靜靜看著他，沒有說「可以」也沒有說「不行」。
+            她知道，這種問題，孩子總有一天會用自己的腳去找答案。
+          </p>
+
+          <div class="article-img">
+            <img src="https://via.placeholder.com/900x450/5d4037/ffffff?text=%E6%B7%B7%E9%AB%94%E5%9C%96%E6%9B%B8%E8%88%87%E4%B8%8A%E9%9D%A2%E4%B9%8B%E5%85%89" alt="被沖進下水道的圖畫書" />
+            <div class="article-img-caption">
+              對志文來說，那本被泡皺的圖畫書，是他第一扇真正通往「上面」的窗。
+            </div>
+          </div>
+
+          <h2>三、一道井蓋縫隙透出的光</h2>
+          <p>
+            在某個轉角，有一個圓形的井蓋。那裡是整條管線中，光線最明亮的地方。
+            陽光會沿著井蓋的孔洞和縫隙灑落下來，在潮濕的地面上形成一個個圓點，
+            像是一小串被切碎的太陽。
+          </p>
+          <p>
+            志文特別喜歡待在那裡。他會蹲在光點中間，默默看著光隨著時間移動，
+            從冰冷的白，到帶點金色的暖，再慢慢淡去。
+          </p>
+
+          <div class="quote">
+            「總有一天，我要從這道縫隙裡出去，看一看完整的太陽。」
+          </div>
+
+          <p>
+            這句話，他在心裡對自己說了很多次，卻從來不敢大聲說出口，
+            因為其他老鼠都覺得那是「太危險、太不務實」的想法。
+          </p>
+
+          <h3>一次意外的「地面氣味」</h3>
+          <p>
+            有一年夏天，城市正在舉辦某種慶典。地面上人群聚集，攤販林立，美食香味
+            混著樂聲，從井蓋縫隙灌了下來。
+          </p>
+          <p>
+            志文第一次聞到：
+          </p>
+          <ul>
+            <li>糖烤栗子的甜味</li>
+            <li>烤玉米的焦香</li>
+            <li>棉花糖黏黏的、帶著孩童笑聲的氣息</li>
+          </ul>
+          <p>
+            那一晚，他幾乎整夜沒睡，腦海裡全是圖畫書上的那隻小老鼠，
+            和井蓋上方看不見的世界。
+          </p>
+
+          <h2>四、離開與失散：被逼出巢的那一場豪雨</h2>
+          <p>
+            改變發生在某一場比他出生那夜更大的暴雨裡。那天，雨水來得又急又猛，
+            下水道的水位快速上升，平常只會淌過腳背的水，眨眼間已淹到肚子。
+          </p>
+          <p>
+            老鼠群開始往高處逃，有的爬上突出的石塊，有的擠向管道交界的小平台。
+            一片驚慌的叫聲中，志文被急促的水流一衝，和媽媽、兄弟姊妹們擠散了。
+          </p>
+          <p>
+            他緊緊抓住一塊漂浮的木板，任水流把他帶往不知名的方向，只能看到
+            頭頂上方那一條條遙遠的管線和時不時閃過的光。
+          </p>
+
+          <div class="quote">
+            那一刻，他第一次真正感受到：原來世界，比他熟悉的那幾段管道，
+            大得多得多，也危險得多。
+          </div>
+
+          <h3>在陌生管線裡學會「獨自」</h3>
+          <p>
+            暴雨過後，水位慢慢退去，志文落在一段他從來沒走過的下水道。
+            牆壁上的記號不一樣，氣味也陌生，連滴水聲的節奏都不像他熟悉的那樣。
+          </p>
+          <p>
+            他第一次真正意識到，自己是「一隻小小的、孤獨的老鼠」，
+            身邊沒有媽媽，也沒有同伴可以依靠。
+          </p>
+          <p>
+            然而，也是在那段日子裡，他逼自己：
+          </p>
+          <ul>
+            <li>自己判斷哪裡有較乾燥、較安全的高地可以暫時休息。</li>
+            <li>靠嗅覺分辨陌生食物是否能吃，是否帶著危險的味道。</li>
+            <li>學會觀察空氣裡的冷熱變化，判斷是否接近出口或井蓋。</li>
+          </ul>
+          <p>
+            每一個小小的決定，都讓他更敏銳，也更堅定一件事：既然已經這麼遠了，
+            與其一心只想回去，不如往前走，看看這一切會把他帶往哪裡。
+          </p>
+
+          <h2>五、破洞的鐵柵欄，第一眼的「真藍」</h2>
+          <p>
+            幾天後，他循著微弱的風聲與光線，來到一處有鐵柵欄的出口。
+            柵欄一角有個小小的破洞，正好勉強可以讓一隻小老鼠鑽過。
+          </p>
+          <p>
+            志文猶豫了。他伸出爪子，摸了摸鐵柵欄邊緣冰冷又粗糙的感覺，
+            心裡突然有點害怕：如果上面世界沒有他想像的美好呢？
+          </p>
+
+          <div class="quote">
+            「可是不試試看，我永遠只會在圖畫書裡看天空。」他想。
+          </div>
+
+          <p>
+            於是，他深吸了一口帶著潮濕與鐵鏽味的氣，鑽了出去。
+          </p>
+
+          <h3>刺眼的光，與真正的天空</h3>
+          <p>
+            剛爬出破洞時，他眼睛幾乎睜不開。陽光對從小生活在昏暗環境裡的眼睛來說，
+            就像一刀突然劃開了世界。
+          </p>
+          <p>
+            他眯著眼，先看到的是一小片亮白，接著，顏色慢慢出現：
+          </p>
+          <ul>
+            <li>是「真正的藍」——不是水光反射的灰藍，而是深遠、乾淨的藍。</li>
+            <li>是「真正的綠」——草地的顏色，原來並不是垃圾袋那種暗沉的綠。</li>
+            <li>還有「會變化的光」——雲移動時，影子在地面悄悄滑過。</li>
+          </ul>
+          <p>
+            志文呆住了，忘了自己是一隻容易被人嫌棄的小老鼠。
+            那一刻，他只是一個第一次看到世界的小生命。
+          </p>
+
+          <div class="article-img">
+            <img src="https://via.placeholder.com/900x450/90a4ae/ffffff?text=%E5%A4%A9%E7%A9%BA%E8%88%87%E8%B1%AA%E4%B8%BD%E7%9A%84%E9%9D%A2%E5%A0%B4" alt="地面上的草地與天空" />
+            <div class="article-img-caption">
+              他第一次真正看見完整的天空，那種藍，比圖畫書上任何一頁都還要深。
+            </div>
+          </div>
+
+          <h2>六、與人類的第一次近距離接觸</h2>
+          <p>
+            不久，一陣腳步聲靠近。是一個小女孩，手上拿著剛吃到一半的麵包，
+            正蹲在路邊看著那個破洞。
+          </p>
+          <p>
+            志文本能地想躲，但他發現自己已經來不及了——他與小女孩的目光在半空中對上，
+            兩個生命都愣了一下。
+          </p>
+
+          <h3>沒有尖叫，只有麵包屑</h3>
+          <p>
+            志文以為下一秒會是尖叫聲、踢腳或是石頭。但出乎意料的，小女孩只是
+            眨了眨眼，然後把手中的麵包掰下一小塊，輕輕放在他面前。
+          </p>
+          <p>
+            「你也餓了吧？」小女孩小聲說。
+          </p>
+          <p>
+            志文愣在原地，嗅了嗅麵包的味道——那不是垃圾桶裡發酸的味道，
+            而是剛出爐不久，仍帶著溫度的麵包香。
+          </p>
+          <p>
+            他小心翼翼地咬了一口。那一瞬間，他突然明白：
+          </p>
+
+          <div class="quote">
+            「原來，這個世界也有不怕老鼠的人類。」
+          </div>
+
+          <p>
+            小女孩沒有伸手去摸他，也沒有強行把他抓起來。她只是靜靜看著他吃，
+            然後站起身，拍拍衣服，對他微微一笑，轉身跑回熱鬧的人群裡。
+          </p>
+
+          <h2>七、在地面與地下之間找到自己的位置</h2>
+          <p>
+            那之後的日子，志文沒有完全離開下水道。他知道，那裡仍是他的根、
+            他熟悉的避風港。暴雨來的時候，下水道依然是他最安全的庇護所。
+          </p>
+          <p>
+            但他也不再把自己，只當成「下水道裡一隻無名的小老鼠」。
+          </p>
+
+          <h3>兩個世界之間的小小橋樑</h3>
+          <p>
+            志文開始有意識地在「上面」和「下面」來回：
+          </p>
+          <ul>
+            <li>當地面上有剩食被隨意丟棄，他會把較乾淨的部分拖回下水道，
+              分給還沒勇氣上來的同伴。</li>
+            <li>他在管線裡記錄哪裡容易積水、哪裡有危險的陷落，帶著年幼的小老鼠避開。</li>
+            <li>偶爾，他會躲在草叢中，看著那個小女孩經過，遠遠地默默道謝。</li>
+          </ul>
+          <p>
+            他用自己的方式，把圖畫書上的夢，變成下水道裡更多小老鼠能懂的語言：
+          </p>
+          <p>
+            「上面有光、有風、有可怕的東西，也有溫柔的人。」<br />
+            「如果你想去看看，我可以告訴你哪裡比較安全。」<br />
+            「但你要記得，不管走多遠，下雨時，要記得回家。」
+          </p>
+
+          <h2>八、小老鼠的「志向」：不只是活下來</h2>
+          <p>
+            志文的名字，是媽媽取的。「志」是希望他有志向，「文」是不忘內心的柔軟與故事。
+          </p>
+          <p>
+            很多老鼠覺得，活下來已經很不容易了，還談什麼志向？
+          </p>
+          <p>
+            但對志文來說，「志向」從來不是要變成什麼厲害的英雄，
+            而是：
+          </p>
+          <ul>
+            <li>在最黑暗的地方，仍然願意抬頭想像光長什麼樣。</li>
+            <li>在最擔心受傷的時刻，仍然願意試著相信一次陌生的善意。</li>
+            <li>在最擁擠混亂的群體裡，仍然願意保留一點溫柔，分給身邊更渺小的生命。</li>
+          </ul>
+
+          <div class="quote">
+            「我是一隻住在下水道的小老鼠，但這不代表，我的心只能待在下水道。」
+          </div>
+
+          <p>
+            當城市的夜晚再次下起雨，水滴沿著鐵柵欄落下，志文會站在某個不會被沖走的
+            高台上，聽著熟悉又陌生的聲音，心裡很平靜——他知道，無論在地面還是地下，
+            他都已經學會了如何做自己。
+          </p>
+
+          <h2>九、寫在故事最後的一點點現實</h2>
+          <p>
+            如果你有機會站在街角，看著路邊的水溝或井蓋，不妨停下來一分鐘，
+            想像一下：在那下面，可能有一隻叫做「陳志文」的小老鼠，
+            正用他獨特的方式，努力在兩個世界之間平衡。
+          </p>
+          <p>
+            也許，你不會真的看見他；也許，你只會看見一個快速跑過的影子。
+            但每一個在城市角落堅持生活的小生命，都有屬於自己的故事，
+            只差有人願意停下腳步，安靜地聽。
+          </p>
+
+          <p>
+            而你的生活中，是否也有一段「下水道時期」呢？<br />
+            也許，是被忽視、被誤解的日子，也許，是還沒找到出口的階段。<br />
+            如果有一天，你終於看見那道井蓋縫隙透出的光，希望你也能像志文一樣，
+            在害怕的同時，仍然選擇向前踏出那一步。
+          </p>
+
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside>
+        <section class="sidebar-section">
+          <h3>關於主角：陳志文</h3>
+          <div class="author-block">
+            <div class="author-avatar">
+              <img src="https://via.placeholder.com/54x54/6d4c41/ffffff?text=%E9%BC%A0" alt="小老鼠頭像示意" />
+            </div>
+            <div>
+              <div class="author-name">下水道小老鼠 · 陳志文</div>
+              <div style="font-size: 12px; color: #777;">
+                出生於城市下水道，喜歡觀察光與影，夢想是讓更多住在陰暗角落的生命，
+                都能看到一小片屬於自己的天空。
+              </div>
+            </div>
+          </div>
+          <div class="tag-list">
+            <span class="tag">下水道生活</span>
+            <span class="tag">小老鼠視角</span>
+            <span class="tag">成長故事</span>
+            <span class="tag">勇氣與溫柔</span>
+          </div>
+        </section>
+
+        <section class="sidebar-section sidebar-links">
+          <h3>延伸閱讀</h3>
+          <ul>
+            <li><a href="#">《雨夜裡的城市角落：我們看不見的地下世界》</a></li>
+            <li><a href="#">《從害怕到好奇：學會與不喜歡的事物共處》</a></li>
+            <li><a href="#">《給正在找出口的你：關於迷惘與選擇的小小指南》</a></li>
+          </ul>
+        </section>
+
+        <section class="sidebar-section">
+          <h3>作者的話</h3>
+          <p>
+            這個故事是虛構的，但城市裡那些被忽視的小角落，卻真實存在。
+            如果下次你路過水溝、井蓋、或者陰暗的牆角，不妨輕輕一瞥，
+            或許會發現一些從未注意過的生命痕跡。
+          </p>
+        </section>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>© 2025 生活誌 · 隨筆（靜態示例頁面）</div>
+      <div class="footer-links">
+        <a href="#">聯絡我們</a>
+        <a href="#">隱私政策</a>
+        <a href="#">使用條款</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
 </body>
 </html>
